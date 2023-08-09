@@ -1,6 +1,6 @@
 import express from "express";
 import cors from 'cors';
-import Usuario from "./Usuario";
+import { Usuario } from './Usuario.js'
 
 const app = express();
 const port = 3000;
@@ -11,13 +11,13 @@ app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 })
 
-const User = new Usuario(1, "mica", "mica12");
+const User = new Usuario("mica", "mica12");
 
-app.post('/logIn', async (req, res) => {
+app.post('/logIn:username:password', async (req, res) => {
     console.log("en post, req:", req)
     console.log(req.body);
-    let username = req.body.username;
-	let password = req.body.password;
+    let username = req.username;
+	let password = req.password;
     try {
         console.log(req);
         if(username===User.username && password===User.password){
