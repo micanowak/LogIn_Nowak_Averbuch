@@ -1,6 +1,6 @@
 import express from "express";
 import cors from 'cors';
-import { BD_Servicies } from "./servicies";
+import { BD_Servicies } from "./servicies.js";
 
 const app = express();
 const port = 3000;
@@ -31,5 +31,16 @@ app.post('/logInUsuario', async (req, res) => {
         
     } catch (error) {
         console.error("error", error);
+    }
+})
+
+app.post('/insertUsuario', async (req, res) => {
+    console.log("en post, req:", req)
+    try {
+        await BD_Servicies.insertUsuario(req.body)
+        res.status(200).json({ message: 'Usuario creado' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Fallo el insert' });
     }
 })

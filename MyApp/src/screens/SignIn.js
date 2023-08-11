@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import { TextInput, View, Text, Button, StyleSheet, TouchableOpacity } from "react-native-web";
 import axios from "axios";
 
-const LogIn = () => {
+const SignIn = () => {
     const [nombreUsuario, setNombreUsuario] = useState('');
     const [contrasenia, setContrasenia] = useState('');
     const [ButtonPressed, setButtonPressed] = useState(false);
     const [Mensaje, setMensaje] = useState('');
     const [error, setError] = useState("");
-
+    
     const buttonOnsubmitHandler = () => {
         setButtonPressed(true);
         axios
-            .post("http://localhost:3000/logInUsuario", {
+            .post("http://localhost:3000/insertUsuario", {
                 username: nombreUsuario,
                 password: contrasenia,
             })
@@ -21,23 +21,24 @@ const LogIn = () => {
                     if (response.status === 200) {
                         //esUsuario = true;
                         console.log(response);
-                        setMensaje("usuario correcto");
+                        setMensaje("usuario registrado");
                     }
                 },
                 (res) => {
                     setError(res.response.data);
-                    setMensaje("usuario incorrecto");
+                    setMensaje("usuario no registrado");
                 }
             );
     };
 
     const onPressHandler = () => {
-        navigation.navigate("SignIn");
+        navigation.navigate("LogIn");
     }
+
 
     return (
         <View>
-            <Text>Inicio de Sesión</Text>
+            <Text>Registro</Text>
             <TextInput
                 value={nombreUsuario}
                 onChangeText={setNombreUsuario}
@@ -48,24 +49,21 @@ const LogIn = () => {
             <TextInput
                 value={contrasenia}
                 onChangeText={setContrasenia}
-                placeholder="Nombre de Usuario"
+                placeholder="Contraseña"
                 secureTextEntry={true}
             />
 
             <Button
-                title="Iniciar Sesión"
-                name="Iniciar Sesión"
+                title="Registrarse"
+                name="Registrarse"
                 onPress={buttonOnsubmitHandler}
             />
             <TouchableOpacity onPress={onPressHandler}>
-                <Text>Registrarse</Text>
+                <Text>Iniciar Sesión</Text>
             </TouchableOpacity>
             {ButtonPressed ? <p>{Mensaje}</p> : <p></p>}
         </View>
     );
-};
+}
 
-const styles = StyleSheet.create({
-});
-
-export default LogIn;
+export default SignIn;
