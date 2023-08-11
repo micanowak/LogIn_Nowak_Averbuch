@@ -31,16 +31,15 @@ export default function App() {
         }}
       >
         <Stack.Screen
+          name="LogIn"
+          component={LogIn}
+          options={{ title: "Log In" }}
+        />
+        <Stack.Screen
           name="SignIn"
           component={SignIn}
           options={{ title: "Sign In" }}
         /> 
-        <Stack.Screen
-          name="LogIn"
-          component={LogIn}
-          options={{ title: "Log In" }}
-        /> 
-        
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { TextInput, View, Text, Button, StyleSheet, TouchableOpacity } from "react-native-web";
 import axios from "axios";
+import { useNavigation } from '@react-navigation/native';
 
 const SignIn = () => {
+    const navigation = useNavigation();
     const [nombreUsuario, setNombreUsuario] = useState('');
     const [contrasenia, setContrasenia] = useState('');
     const [ButtonPressed, setButtonPressed] = useState(false);
