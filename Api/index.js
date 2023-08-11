@@ -1,6 +1,6 @@
 import express from "express";
 import cors from 'cors';
-import { Usuario } from './Usuario.js'
+import { BD_Servicies } from "./servicies";
 
 const app = express();
 const port = 3000;
@@ -11,22 +11,24 @@ app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 })
 
-const User = new Usuario("mica", "mica12");
-
-app.post('/logIn:username:password', async (req, res) => {
+app.post('/logInUsuario', async (req, res) => {
     console.log("en post, req:", req)
     console.log(req.body);
-    let username = req.username;
-	let password = req.password;
+    let username = req.body.username;
+	let password = req.body.password;
     try {
         console.log(req);
-        if(username===User.username && password===User.password){
-            res.status = 200;
-            res.send("Está ok");
+        const results = await BD_Servicies.logInFunction(username, password);
+        console.log("results", results);
+        if(results) {
+            res.status(200).json({ message: 'Usuario Verificado' });
+            console.log(results);
         } else {
-            res.send("No está ok");
-            res.status = 500;
+            console.log("No encontrado");
+            res.status(401).json('Nombre de usuario y/o contraseña incorrecta');
+            console.log(results);
         }
+        
     } catch (error) {
         console.error("error", error);
     }
