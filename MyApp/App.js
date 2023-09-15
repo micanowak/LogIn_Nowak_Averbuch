@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import LogIn from './src/screens/LogIn';
+import Home from './src/screens/Home';
 import {
   NavigationContainer,
   StackRouter,
@@ -40,6 +41,11 @@ export default function App() {
           component={SignIn}
           options={{ title: "Sign In" }}
         /> 
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ title: "Home" }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

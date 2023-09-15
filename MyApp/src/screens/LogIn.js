@@ -24,6 +24,7 @@ const LogIn = () => {
                         //esUsuario = true;
                         console.log(response);
                         setMensaje("usuario correcto");
+                        navigation.navigate("Home");
                     }
                 },
                 (res) => {

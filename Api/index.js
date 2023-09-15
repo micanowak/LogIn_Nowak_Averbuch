@@ -44,3 +44,8 @@ app.post('/insertUsuario', async (req, res) => {
         res.status(500).json({ error: 'Fallo el insert' });
     }
 })
+
+app.get('/getUsuarioById/:id', async (req, res) => {
+    const Usuario = await BD_Servicies.getUsuarioById(req.params.id)
+    res.status(200).send(Usuario)
+})
