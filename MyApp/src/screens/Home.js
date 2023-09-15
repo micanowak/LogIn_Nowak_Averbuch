@@ -6,9 +6,12 @@ import { useNavigation } from '@react-navigation/native';
 const Home = ({idUsuario}) => {
     const navigation = useNavigation();
     const [Usuario, setUsuario] = useState({});
+
     const [perfilCompleto, setPerfilCompleto] = useState(false);
 
-    
+    const perfilOnClickHandler = () =>{
+        navigation.navigate("Perfil", idUsuario);
+    }
 
     axios
             .get("http://localhost:3000/getUsuarioById", {
@@ -34,8 +37,7 @@ const Home = ({idUsuario}) => {
     return (
         <View>
             <Text>HOME</Text>
-            <Text>{Usuario.Nombre}</Text>
-            <Text>{Usuario.Apellido}</Text>
+            {perfilCompleto ? <p onClick={perfilOnClickHandler}>Bienvenido, completa tu Perfil!</p> : <p>Bienvenido {Usuario.Nombre} {Usuario.Apellido}!</p>}
         </View>
     );
 };

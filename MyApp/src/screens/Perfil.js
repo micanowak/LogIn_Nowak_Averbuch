@@ -6,9 +6,6 @@ import { useNavigation } from '@react-navigation/native';
 const Perfil = ({idUsuario}) => {
     const navigation = useNavigation();
     const [Usuario, setUsuario] = useState({});
-    const [perfilCompleto, setPerfilCompleto] = useState(false);
-
-    
 
     axios
             .get("http://localhost:3000/updateUsuarioInfo", {
@@ -19,11 +16,6 @@ const Perfil = ({idUsuario}) => {
                     if (response.status === 200) {
                         console.log(response);
                         setUsuario(response.data.products);
-
-                        if(Usuario.Nombre != undefined && Usuario.Apellido != undefined){
-                            setPerfilCompleto(true);
-                        }
-
                     }
                 },
                 (res) => {
@@ -33,9 +25,7 @@ const Perfil = ({idUsuario}) => {
 
     return (
         <View>
-            <Text>HOME</Text>
-            <Text>{Usuario.Nombre}</Text>
-            <Text>{Usuario.Apellido}</Text>
+            <Text>Perfil</Text>
         </View>
     );
 };

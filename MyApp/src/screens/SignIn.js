@@ -7,6 +7,7 @@ const SignIn = () => {
     const navigation = useNavigation();
     const [nombreUsuario, setNombreUsuario] = useState('');
     const [contrasenia, setContrasenia] = useState('');
+    const [usuario, setUsuario] = useState({});
     const [ButtonPressed, setButtonPressed] = useState(false);
     const [Mensaje, setMensaje] = useState('');
     const [error, setError] = useState("");
@@ -24,7 +25,8 @@ const SignIn = () => {
                         //esUsuario = true;
                         console.log(response);
                         setMensaje("usuario registrado");
-                        navigation.navigate("Home");
+                        setUsuario(response.data.products);
+                        navigation.navigate("Home", usuario.id);
                     }
                 },
                 (res) => {

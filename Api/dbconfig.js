@@ -15,15 +15,15 @@ export default config;
 
 /*USE [master]
 GO
-CREATE LOGIN [micaMiji] WITH PASSWORD=N'micaMiji', DEFAULT_DATABASE=[BD], CHECK_EXPIRATION=OFF,
+CREATE LOGIN [micaMijiTommy] WITH PASSWORD=N'micaMijiTommy', DEFAULT_DATABASE=[BD], CHECK_EXPIRATION=OFF,
 CHECK_POLICY=OFF
 GO
 
 USE [BD]
 GO
-CREATE USER [micaMiji] FOR LOGIN [micaMiji]
+CREATE USER [micaMijiTommy] FOR LOGIN [micaMijiTommy]
 GO
 USE [BD]
 GO
-ALTER ROLE [db_owner] ADD MEMBER [micaMiji]
+ALTER ROLE [db_owner] ADD MEMBER [micaMijiTommy]
 GO*/

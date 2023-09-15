@@ -50,4 +50,14 @@ app.get('/getUsuarioById/:id', async (req, res) => {
     res.status(200).send(Usuario)
 })
 
-// CREAR UPDATEEEEEEEE
+app.put('/updateUsuarioInfo', async (req, res) => {
+    try {
+        console.log(req.params.id);
+        await BD_Servicies.updateUsuarioInfo(req.params.id, req.body);
+        res.status(200).json({ message: 'Usuario Actualizado'});
+    } catch(error) {
+        console.log(error);
+        res.status(500).json({ error: 'Fallo el update' });
+
+    }
+})
