@@ -11,6 +11,7 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 import SignIn from './src/screens/SignIn';
+import Perfil from './src/screens/Perfil';
 
 
 export default function App() {   
@@ -45,6 +46,11 @@ export default function App() {
           name="Home"
           component={Home}
           options={{ title: "Home" }}
+        />
+        <Stack.Screen
+          name="Perfil"
+          component={Perfil}
+          options={{ title: "Perfil" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
