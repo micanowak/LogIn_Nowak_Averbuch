@@ -1,26 +1,26 @@
 import React, { useState } from "react";
 import { TextInput, View, Text, Button, StyleSheet, TouchableOpacity } from "react-native-web";
+import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { useNavigation } from '@react-navigation/native';
 
 const Home = ({route}) => {
     const navigation = useNavigation();
     const [Usuario, setUsuario] = useState({});
-    const [idUsuario, setIdUsuario] = useState({});
-    let parametro = route.params;
-    setIdUsuario(1);
-    console.log(idUsuario);
-    console.log(parametro);
+    const [iddUsuario, setIddUsuario] = useState({});
+    let idUsuario = useParams();
+    setIddUsuario(idUsuario);
+    console.log(iddUsuario);
 
     const [perfilCompleto, setPerfilCompleto] = useState(false);
 
     const perfilOnClickHandler = () => {
-        navigation.navigate("Perfil", idUsuario);
+        navigation.navigate("Perfil", iddUsuario);
     }
 
     axios
         .get("http://localhost:3000/getUsuarioById", {
-            id: idUsuario,
+            id: iddUsuario,
         })
         .then(
             (response) => {
