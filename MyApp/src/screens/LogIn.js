@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 const LogIn = () => {
     const navigation = useNavigation();
     const [nombreUsuario, setNombreUsuario] = useState('');
-    const [usuario, setUsuario] = useState({});
+    const [idUsuario, setIdUsuario] = useState(0);
     const [contrasenia, setContrasenia] = useState('');
     const [ButtonPressed, setButtonPressed] = useState(false);
     const [Mensaje, setMensaje] = useState('');
@@ -25,8 +25,9 @@ const LogIn = () => {
                         //esUsuario = true;
                         console.log(response);
                         setMensaje("usuario correcto");
-                        setUsuario(response.data.products);
-                        navigation.navigate("Home", usuario.id);
+                        setIdUsuario(response.data.id);
+                        console.log(idUsuario);
+                        //navigation.navigate("Home", idUsuario);
                     }
                 },
                 (res) => {

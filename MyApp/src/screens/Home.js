@@ -27,7 +27,7 @@ const Home = () => {
                     console.log(response);
                     setUsuario(response.data.products);
 
-                    if (Usuario.Nombre != undefined && Usuario.Apellido != undefined) {
+                    if (Usuario.nombre != null && Usuario.apellido != null) {
                         setPerfilCompleto(true);
                     }
 

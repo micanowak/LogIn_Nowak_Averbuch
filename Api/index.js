@@ -21,7 +21,7 @@ app.post('/logInUsuario', async (req, res) => {
         const results = await BD_Servicies.logInFunction(username, password);
         console.log("results", results);
         if(results) {
-            res.status(200).json({ message: 'Usuario Verificado' });
+            res.status(200).json(results);
             console.log(results);
         } else {
             console.log("No encontrado");
