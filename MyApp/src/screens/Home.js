@@ -42,7 +42,10 @@ const Home = ({route}) => {
     return (
         <View>
             <Text>HOME</Text>
-            {perfilCompleto ? <p onClick={perfilOnClickHandler}>Bienvenido, completa tu Perfil!</p> : <p>Bienvenido {Usuario.Nombre} {Usuario.Apellido}!</p>}
+            {perfilCompleto ? <p>Bienvenido, completa tu Perfil!</p> : <p>Bienvenido {Usuario.Nombre} {Usuario.Apellido}!</p>}
+            <TouchableOpacity onPress={perfilOnClickHandler} style={styles.button}> 
+                <Text style = {{marginLeft:'27%', fontSize:16, fontWeight:'500'}}>{perfilCompleto ?<p>Ir a mi Perfil</p>:<p>Completar Perfil</p>}</Text>
+            </TouchableOpacity>
         </View>
     );
 };
