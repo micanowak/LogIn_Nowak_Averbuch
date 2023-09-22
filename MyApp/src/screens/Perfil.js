@@ -13,8 +13,8 @@ const Perfil = ({idUsuario}) => {
         axios
             .get("http://localhost:3000/updateUsuarioInfo", {
                 id: idUsuario,
-                Nombre: nombre,
-                Apellido: apellido
+                nombre: nombre,
+                apellido: apellido
             })
             .then(
                 (response) => {

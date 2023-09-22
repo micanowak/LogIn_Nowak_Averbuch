@@ -25,8 +25,8 @@ const SignIn = () => {
                         //esUsuario = true;
                         console.log(response);
                         setMensaje("usuario registrado");
-                        setUsuario(response.data.products);
-                        navigation.navigate("Home", usuario.id);
+                        setUsuario(response.data);
+                        navigation.navigate("LogIn");
                     }
                 },
                 (res) => {

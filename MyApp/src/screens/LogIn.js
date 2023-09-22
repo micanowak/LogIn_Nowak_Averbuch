@@ -26,8 +26,8 @@ const LogIn = () => {
                         console.log(response);
                         setMensaje("usuario correcto");
                         setIdUsuario(response.data.id);
-                        console.log(idUsuario);
-                        //navigation.navigate("Home", idUsuario);
+                        console.log(response.data.id);
+                        navigation.navigate("Home", idUsuario);
                     }
                 },
                 (res) => {
@@ -36,6 +36,8 @@ const LogIn = () => {
                 }
             );
     };
+
+    console.log(idUsuario);
 
     const onPressHandler = () => {
         navigation.navigate("SignIn");

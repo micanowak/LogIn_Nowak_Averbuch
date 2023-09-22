@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import { TextInput, View, Text, Button, StyleSheet, TouchableOpacity } from "react-native-web";
 import axios from "axios";
 import { useNavigation } from '@react-navigation/native';
-import { render } from "react-dom";
 
-const Home = () => {
+const Home = ({route}) => {
     const navigation = useNavigation();
     const [Usuario, setUsuario] = useState({});
     const [idUsuario, setIdUsuario] = useState({});
-    setIdUsuario(this.props.route.params.id);
+    let parametro = route.params;
+    setIdUsuario(1);
     console.log(idUsuario);
+    console.log(parametro);
 
     const [perfilCompleto, setPerfilCompleto] = useState(false);
 
@@ -47,6 +48,9 @@ const Home = () => {
 };
 
 const styles = StyleSheet.create({
+    button:{
+        backgroundColor:'#fda3ff', width: '30%', color:'black',  marginTop:10, marginLeft:'35%', padding: 12,borderRadius:15,
+    }
 });
 
 export default Home;   
