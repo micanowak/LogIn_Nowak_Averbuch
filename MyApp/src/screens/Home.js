@@ -14,7 +14,9 @@ const Home = () => {
     const [perfilCompleto, setPerfilCompleto] = useState(true);
 
     const perfilOnClickHandler = () => {
-        navigation.navigate("Perfil", idUsuario);
+        const nombreUsuario = saveUser.nombre;
+        const apellidoUsuario = saveUser.apellido;
+        navigation.navigate("Perfil", [idUsuario, nombreUsuario, apellidoUsuario]);
     }
 
     const [saveUser, setSaveUser] = useState({

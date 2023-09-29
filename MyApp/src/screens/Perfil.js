@@ -6,11 +6,10 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 const Perfil = () => {
     const navigation = useNavigation();
     const route = useRoute();
-    const [Usuario, setUsuario] = useState({});
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
 
-    const {idUsuario} = route.params;
+    const {idUsuario, nombreUsuario, apellidoUsuario} = route.params;
 
     const buttonOnsubmitHandler = () => {
         axios
@@ -23,7 +22,6 @@ const Perfil = () => {
                 (response) => {
                     if (response.status === 200) {
                         console.log(response);
-                        setUsuario(response.data.products);
                         navigation.navigate("Home", idUsuario)
                     }
                 },
@@ -40,7 +38,7 @@ const Perfil = () => {
                 value={nombre}
                 style ={styles.textInput}
                 onChangeText={setNombre}
-                placeholder="Nombre"
+                placeholder={nombreUsuario}
                 secureTextEntry={false}
             /> 
 
@@ -48,7 +46,7 @@ const Perfil = () => {
                 style ={styles.textInput}
                 value={apellido}
                 onChangeText={setApellido}
-                placeholder="Apellido"
+                placeholder={apellidoUsuario}
                 secureTextEntry={false}
             />
 
