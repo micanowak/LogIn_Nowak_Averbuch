@@ -25,7 +25,7 @@ const LogIn = () => {
                         console.log(response);
                         setMensaje("usuario correcto");
                         console.log(response.data.id);
-                        navigation.navigate("Home", response.data.id);
+                        navigation.navigate("Home", response.data.id, response.data.nombre, response.data.apellido);
                     }
                 },
                 (res) => {

@@ -11,6 +11,11 @@ const SignIn = () => {
     const [ButtonPressed, setButtonPressed] = useState(false);
     const [Mensaje, setMensaje] = useState('');
     const [error, setError] = useState("");
+
+    // NO SE PUEDE REPETIR EL NOMBRE DE USUARIO, HAY QUE PROGRAMARLO
+    // MEJORAR ESTILOS
+    // RECARGA AUTOMÁTICA
+    // CONDICIONAL DE PERFIL COMPLETADO
     
     const buttonOnsubmitHandler = () => {
         setButtonPressed(true);
