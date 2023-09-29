@@ -38,12 +38,12 @@ export class BD_Servicies {
 
     static getUsuarioById = async (id) => {
         let returnEntity = null;
-        console.log('Estoy en: BD_Servicies.getUsuarioById(id)');
+        console.log('Estoy en: bdSer.getUserById(id)');
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
                 .input('pId', sql.Int, id)
-                .query('SELECT * FROM Usuario WHERE id = @pId');
+                .query('Select * from Usuario where id = @pId');
             returnEntity = result.recordsets[0][0];
         } catch (error) {
             console.log(error);

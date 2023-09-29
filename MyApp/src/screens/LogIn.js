@@ -6,7 +6,6 @@ import { useNavigation } from '@react-navigation/native';
 const LogIn = () => {
     const navigation = useNavigation();
     const [nombreUsuario, setNombreUsuario] = useState('');
-    const [idUsuario, setIdUsuario] = useState(0);
     const [contrasenia, setContrasenia] = useState('');
     const [ButtonPressed, setButtonPressed] = useState(false);
     const [Mensaje, setMensaje] = useState('');
@@ -25,9 +24,8 @@ const LogIn = () => {
                         //esUsuario = true;
                         console.log(response);
                         setMensaje("usuario correcto");
-                        setIdUsuario(response.data.id);
                         console.log(response.data.id);
-                        navigation.navigate("Home", idUsuario);
+                        navigation.navigate("Home", response.data.id);
                     }
                 },
                 (res) => {
@@ -37,7 +35,6 @@ const LogIn = () => {
             );
     };
 
-    console.log(idUsuario);
 
     const onPressHandler = () => {
         navigation.navigate("SignIn");
