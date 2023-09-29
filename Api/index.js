@@ -53,8 +53,7 @@ app.get('/getUsuarioById/:id', async (req, res) => {
 
 app.put('/updateUsuarioInfo', async (req, res) => {
     try {
-        console.log(req.params.id);
-        await BD_Servicies.updateUsuarioInfo(req.params.id, req.body);
+        await BD_Servicies.updateUsuarioInfo(req.body);
         res.status(200).json({ message: 'Usuario Actualizado'});
     } catch(error) {
         console.log(error);

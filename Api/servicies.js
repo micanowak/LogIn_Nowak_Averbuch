@@ -51,17 +51,18 @@ export class BD_Servicies {
         return returnEntity;
     }
 
-    static updateUsuarioInfo = async (id, Usuario) => {
+    static updateUsuarioInfo = async (Usuario) => {
         let returnEntity = null;
-        console.log('Estoy en: BD_Servicies.updateUsuarioInfo(id, Usuario)');
+        console.log('Estoy en: BD_Servicies.updateUsuarioInfo(Usuario)');
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
-                .input('pId', sql.Int, id)
-                .input('pApe', Usuario.Apellido)
-                .input('pNom', Usuario.Nombre)
-                .query("UPDATE Usuario SET Apellido=@pApe, nombre=@pNom WHERE id = @pId");
-            returnEntity = result.recordsets[0][0];
+                .input('pId', sql.Int, Usuario.id)
+                .input('pApe', Usuario.apellido)
+                .input('pNom', Usuario.nombre)
+                .query("UPDATE Usuario SET apellido=@pApe, nombre=@pNom WHERE id = @pId");
+            returnEntity = result.recordsets[0];
+            console.log(Usuario);
         } catch (error) {
             console.log(error);
         }

@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { TextInput, View, Text, Button, StyleSheet, TouchableOpacity } from "react-native-web";
 import axios from "axios";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
-const Perfil = ({idUsuario}) => {
+const Perfil = () => {
     const navigation = useNavigation();
+    const route = useRoute();
     const [Usuario, setUsuario] = useState({});
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
+
+    const {idUsuario} = route.params;
 
     const buttonOnsubmitHandler = () => {
         axios
@@ -39,7 +42,7 @@ const Perfil = ({idUsuario}) => {
                 onChangeText={setNombre}
                 placeholder="Nombre"
                 secureTextEntry={false}
-            />
+            /> 
 
             <TextInput
                 style ={styles.textInput}

@@ -69,7 +69,7 @@ const Home = () => {
             <Text>HOME</Text>
             {perfilCompleto == false ? <p>Bienvenido, completa tu Perfil!</p> : <p>Bienvenido {saveUser.nombre} {saveUser.apellido}!</p>}
             <TouchableOpacity onPress={perfilOnClickHandler} style={styles.button}>
-                <Text style={{ marginLeft: '27%', fontSize: 16, fontWeight: '500' }}>{perfilCompleto ? <p>Ir a mi Perfil</p> : <p>Completar Perfil</p>}</Text>
+                <Text style={{ marginLeft: '27%', fontSize: 16, fontWeight: '500' }}>{perfilCompleto ? <p>Editar Perfil</p> : <p>Completar Perfil</p>}</Text>
             </TouchableOpacity>
         </View>
     );
