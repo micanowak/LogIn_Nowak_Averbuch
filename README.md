@@ -186,7 +186,7 @@ See the [open issues](https://github.com/micanowak/LogIn_Nowak_Averbuch_Smaevich
 * Mijal Averbuch - [@tommy_sma](https://www.instagram.com/tommy_sma/) - tsmaevich8@gmail.com
 
 
-Project Link: [LogIn_Nowak_Averbuch_Smaevich.git]https://github.com/micanowak/LogIn_Nowak_Averbuch_Smaevich.git
+Project Link: https://github.com/micanowak/LogIn_Nowak_Averbuch_Smaevich.git
 
 <p align="right">(<a href="#readme-top">Volver hacia Arriba</a>)</p>
 
