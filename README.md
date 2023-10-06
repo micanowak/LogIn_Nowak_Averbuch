@@ -180,10 +180,11 @@ See the [open issues](https://github.com/micanowak/LogIn_Nowak_Averbuch_Smaevich
 
 <!-- CONTACT -->
 ## Contact
-
-Micaela Nowak - [@mica.nowak](https://www.instagram.com/mica.nowak/) - micanowak1@gmail.com
-Tommy Smaevich - [@mica.nowak](https://www.instagram.com/mijiaver/) - mijal_correo@averbuch.com.ar
-Mijal Averbuch - [@mica.nowak](https://www.instagram.com/tommy_sma/) - tsmaevich8@gmail.com
+<ol>
+<li>Micaela Nowak - [@mica.nowak](https://www.instagram.com/mica.nowak/) - micanowak1@gmail.com </li>
+<li>Tommy Smaevich - [@mica.nowak](https://www.instagram.com/mijiaver/) - mijal_correo@averbuch.com.ar </li>
+<li>Mijal Averbuch - [@mica.nowak](https://www.instagram.com/tommy_sma/) - tsmaevich8@gmail.com </li>
+</ol>
 
 Project Link: [](https://github.com/micanowak/LogIn_Nowak_Averbuch_Smaevich.git)
 
