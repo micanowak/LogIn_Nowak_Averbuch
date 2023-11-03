@@ -12,7 +12,21 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 import SignIn from './src/screens/SignIn';
 import Perfil from './src/screens/Perfil';
+import { initializeApp } from "firebase/app"
+import { getFirestore } from "firebase/firestore";
 
+const firebaseConfig = {
+  apiKey: "AIzaSyDYzKjC_JD3imqZjacsJvEsp8nvb6KkPLo",
+  authDomain: "login-nowak-averbuch-smaevich.firebaseapp.com",
+  projectId: "login-nowak-averbuch-smaevich",
+  storageBucket: "login-nowak-averbuch-smaevich.appspot.com",
+  messagingSenderId: "290640125257",
+  appId: "1:290640125257:web:dbad063d65630f10c3ce98",
+  measurementId: "G-5NNCX5BSP0"
+};
+
+const app = initializeApp(firebaseConfig);
+const DB = getFirestore(app);
 
 export default function App() {   
   
