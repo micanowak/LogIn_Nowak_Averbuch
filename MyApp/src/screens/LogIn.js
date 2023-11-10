@@ -1,21 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { TextInput, View, Text, Button, StyleSheet, TouchableOpacity } from "react-native-web";
 import { useNavigation } from '@react-navigation/native';
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
+import firebase from 'firebase/app'; // inecesario 
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDYzKjC_JD3imqZjacsJvEsp8nvb6KkPLo",
-    authDomain: "login-nowak-averbuch-smaevich.firebaseapp.com",
-    projectId: "login-nowak-averbuch-smaevich",
-    storageBucket: "login-nowak-averbuch-smaevich.appspot.com",
-    messagingSenderId: "290640125257",
-    appId: "1:290640125257:web:dbad063d65630f10c3ce98",
-    measurementId: "G-5NNCX5BSP0"
-};
-
-firebase.initializeApp(firebaseConfig);
 
 const LogIn = () => {
     const navigation = useNavigation();
@@ -25,9 +13,46 @@ const LogIn = () => {
     const [Mensaje, setMensaje] = useState('');
     const [error, setError] = useState("");
 
+    const[user,setUser] = useState({
+        Email:"",
+        Password: ""});
+
+    const auth = getAuth()
+
+    useEffect(() => { // cuando se cambia el mail se actualiza directo en usuario
+        setUser(() => {
+            Email: nombreUsuario
+        })
+    }), [nombreUsuario]
+
+    useEffect(() => { // cuando se cambia el mail se actualiza directo en password
+        setUser(() => {
+            Password: contrasenia
+        })
+    }), [contrasenia]
+
     const buttonOnsubmitHandler = async () => {
         setButtonPressed(true);
-
+       //Firebase
+        const obj ={
+            Email:"",
+            Password:""
+        }
+        signInWithEmailAndPassword(auth, nombreUsuario,contrasenia) // login con mail y password
+        
+        .then((userCredential) => {
+            const userLogged = userCredential.user;
+            const updateUserContext = async () => await setUser(userLogged)
+            updateUserContext()
+            console.log('Inicio sesion exitosa!')
+            navigation.navigate('Home', { user: obj })
+          })
+          .catch((error) => {
+            console.log(error)
+            console.log('user no encontrado');
+          })
+        
+        /*
         try {
             const userCredential = await firebase.auth().signInWithEmailAndPassword(nombreUsuario, contrasenia);
 
@@ -47,7 +72,7 @@ const LogIn = () => {
         } catch (error) {
             setError(error.message);
             setMensaje("Inicio de sesión incorrecto");
-        }
+        }*/
     };
 
     const onPressHandler = () => {

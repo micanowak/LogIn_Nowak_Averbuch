@@ -9,12 +9,20 @@ import {
   DefaultTheme,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-const Stack = createNativeStackNavigator();
 import SignIn from './src/screens/SignIn';
 import Perfil from './src/screens/Perfil';
+
+//Firebase
+import firebase from 'firebase/app';
 import { initializeApp } from "firebase/app"
 import { getFirestore } from "firebase/firestore";
+import { getAnalytics } from "firebase/analytics";
 
+const Stack = createNativeStackNavigator();
+
+
+
+// Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyDYzKjC_JD3imqZjacsJvEsp8nvb6KkPLo",
   authDomain: "login-nowak-averbuch-smaevich.firebaseapp.com",
@@ -24,9 +32,9 @@ const firebaseConfig = {
   appId: "1:290640125257:web:dbad063d65630f10c3ce98",
   measurementId: "G-5NNCX5BSP0"
 };
-
 const app = initializeApp(firebaseConfig);
-const DB = getFirestore(app);
+const analytics = getAnalytics(app);
+// Inicializo Firebase
 
 export default function App() {   
   
@@ -37,6 +45,8 @@ export default function App() {
       background: "#1A4B8E",
     },
   };
+  
+
 
   return (
     <NavigationContainer theme={navTheme}>
