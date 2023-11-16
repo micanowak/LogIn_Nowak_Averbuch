@@ -3,7 +3,8 @@ import { TextInput, View, Text, Button, StyleSheet, TouchableOpacity } from "rea
 import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { useNavigation, useRoute } from '@react-navigation/native';
-
+import {Container,Row,Col,Carousel} from 'react-bootstrap';
+import ExampleCarouselImage from 'components/ExampleCarouselImage';
 const Home = () => {
     const navigation = useNavigation();
     const router = useRoute();
@@ -14,6 +15,9 @@ const Home = () => {
     const [perfilCompleto, setPerfilCompleto] = useState(true);
     const [nombreUsuario, setNombreUsuario] = useState('');
     const [apellidoUsuario, setApellidoUsuario] = useState('');
+    const [pokemos, setPokemones] = useState([]);
+
+
 
     const perfilOnClickHandler = () => {
         navigation.navigate("Perfil", {idUsuario, nombreUsuario, apellidoUsuario});
@@ -39,15 +43,40 @@ const Home = () => {
     }, []);
 
     console.log(perfilCompleto);
+    useEffect(()=>{
+        axios.get(`https://pokeapi.co/api/v2/pokemon/`)
+        .then((res)=>{
+            console.log(res.data);
+            setPokemones(res.data)
+        })
+    },[]);
 
     return (
-        <View>
-            <Text>HOME</Text>
-            {perfilCompleto == false ? <p>Bienvenido, completa tu Perfil!</p> : <p>Bienvenido {nombreUsuario} {apellidoUsuario}!</p>}
-            <TouchableOpacity onPress={perfilOnClickHandler} style={styles.button}>
-                <Text style={{ marginLeft: '27%', fontSize: 16, fontWeight: '500' }}>{perfilCompleto ? <p>Editar Perfil</p> : <p>Completar Perfil</p>}</Text>
-            </TouchableOpacity>
-        </View>
+        <Carousel>
+      <Carousel.Item>
+        <ExampleCarouselImage text="First slide" />
+        <Carousel.Caption>
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <ExampleCarouselImage text="Second slide" />
+        <Carousel.Caption>
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <ExampleCarouselImage text="Third slide" />
+        <Carousel.Caption>
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
     );
 };
 
