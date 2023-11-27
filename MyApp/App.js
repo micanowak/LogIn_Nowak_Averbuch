@@ -11,12 +11,16 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SignIn from './src/screens/SignIn';
 import Perfil from './src/screens/Perfil';
+import FinJuego from "./src/screens/FinJuego";
+import Juego from './src/screens/Juego';
+import unirJuego from './src/screens/unirJuego';
 
 //Firebase
 import firebase from 'firebase/app';
 import { initializeApp } from "firebase/app"
 import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -56,11 +60,10 @@ export default function App() {
           headerShown: false,
         }}
       >
-        
         <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ title: "Home" }}
+          name="unirJuego"
+          component={unirJuego}
+          options={{ title: "Unir Juego" }}
         />
         <Stack.Screen
           name="LogIn"
@@ -68,11 +71,25 @@ export default function App() {
           options={{ title: "Log In" }}
         />
         <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ title: "Home" }}
+        />
+        <Stack.Screen
+          name="FinJuego"
+          component={FinJuego}
+          options={{ title: "Fin Juego" }}
+        />
+        <Stack.Screen
           name="SignIn"
           component={SignIn}
           options={{ title: "Sign In" }}
         /> 
-        
+        <Stack.Screen
+          name="Juego"
+          component={Juego}
+          options={{ title: "Adivina Juego" }}
+        /> 
         <Stack.Screen
           name="Perfil"
           component={Perfil}

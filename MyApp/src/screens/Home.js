@@ -1,104 +1,69 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, Image,TouchableOpacity } from 'react-native';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Image,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
+import SelectDropdown from 'react-native-select-dropdown';
 
-const Detalle = () => {
-  const [listCountries, setListCountries] = useState([]);
+const Home = () => {
 
-  useEffect(() => {
-    axios.get('https://countriesnow.space/api/v0.1/countries/flag/images')
-      .then(res => {
-        setListCountries(res.data.data);
-        console.log(res.data.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
+  const navigation = useNavigation();
+  const [OpcionJuego, setOpcionJuego] = useState(0);
 
-  // Función para obtener 6 países aleatorios de la lista
-  const getRandomCountries = () => {
-    const randomIndexes = [];
-    while (randomIndexes.length < 6) {
-      const randomIndex = Math.floor(Math.random() * listCountries.length);
-      if (!randomIndexes.includes(randomIndex)) {
-        randomIndexes.push(randomIndex);
-      }
-    }
-    return randomIndexes.map(index => listCountries[index]);
-  };
+  const selectOptions = [
+    { label: '2', value: 2 },
+    { label: '3', value: 3 },
+    { label: '4', value: 4 },
+  ];
 
-  const renderCountryItem = ({ item }) => (
-    <View style={styles.countryItem}>
-      <Image
-        style={styles.countryImage}
-        source={{ uri: item.flag }}
-      />
-      <View style={styles.countryDetails}>
-        <Text style={styles.countryName}>{item.name}</Text>
-      </View>
-    </View>
-  );
+  const adivinaBanderaHandler = () => {
+    navigation.navigate("Juego");
+  }
+  const UnirHandler = () => {
+    navigation.navigate("unirJuego");
+  }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.headerContainer}></View>
-      <TouchableOpacity 
-      style={styles.mainContainer}
-      onPress={() => {
-        
-      }}
-      >
-        {listCountries.length > 0 ? (
-          <FlatList
-            data={getRandomCountries()}
-            keyExtractor={(item) => item.iso2}
-            renderItem={renderCountryItem}
-            numColumns={2}
-          />
-        ) : (
-          <Text>Error</Text>
-        )}
+    <View>
+      <View>
+        <Text>Juegos con Banderas y páises</Text>
+      </View>
+      <TouchableOpacity onPress={adivinaBanderaHandler}>
+        <Text>Adivina la bandera</Text>
       </TouchableOpacity>
-      <View style={styles.footerContainer}></View>
+      <TouchableOpacity onPress={UnirHandler}>
+        <Text>Unir Banderas con sus nombres</Text>
+      </TouchableOpacity>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-  },
-  headerContainer: {
-    
-    height: 80,
-  },
-  mainContainer: {
-    flex: 1,
-    padding: 10,
-  },
-  footerContainer: {
-    height: 120,
-  },
-  countryItem: {
-    flex: 1,
-    margin: 10,
-    alignItems: 'center',
-  },
-  countryImage: {
-    width: 100,
-    height: 60,
-  },
-  countryDetails: {
-    marginTop: 5,
-    alignItems: 'center',
-  },
-  countryName: {
-    fontWeight: 'bold',
-    color:'white',
-
-  },
+  dropdown:{
+    backgroundColor: 'white',
+    borderColor: '#E742EB',
+    borderRadius: 15,
+    borderWidth: 2,
+    paddingLeft: 10,
+    padding: 5,
+    marginRight: 5,
+    marginBottom: 20,
+    width:'100%',
+    height:'auto'
+},
+textDropdown:{
+    color:'#1a4b8e',
+    fontSize:'14px',
+    fontWeight: 600,
+    textAlign: 'justify'
+},
 });
 
-export default Detalle;
+export default Home;
