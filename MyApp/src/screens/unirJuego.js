@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, Alert, TextInput } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, Alert, TextInput, ImageBackground } from 'react-native';
 import axios from 'axios';
 import { useNavigation, useRoute } from "@react-navigation/native";
 
@@ -93,9 +93,7 @@ const unirJuego = () => {
                     style={styles.countryImage}
                     source={{ uri: item.flag }}
                 />
-                <View style={styles.countryDetails}>
-                    <Text style={styles.countryName}>{item.name}</Text>
-                </View>
+                
             </View>
         </View>
     );
@@ -112,80 +110,84 @@ const unirJuego = () => {
 
 
     return (
-        <View>
-            <View style={styles.mainContainer}>
-                {randomCountries.map((item) => (renderCountryItem(item)))}
-            </View>
-            <View style={styles.shuffledNamesContainer}>
-                {shuffledNames.map((item, index) => (
-                    <Text key={index} style={styles.textButton}>
-                        {item}
-                    </Text>
-                ))}
-            </View>
-            <View>
-                <View style={styles.countryDetails}>
-                    <Text style={styles.countryName}>1.</Text>
-                    <TextInput
-                        value={answer1}
-                        setValue={setAnswer1}
-                        placeholder="País en Inglés"
-                        placeholderTextColor={styles.placeholderStyle.color}
-                        style={styles.eachForm}
-                        onChange={answer1Handler}
-                    />
-                    <Text style={styles.countryName}>2.</Text>
-                    <TextInput
-                        value={answer2}
-                        setValue={setAnswer2}
-                        placeholder="País en Inglés"
-                        placeholderTextColor={styles.placeholderStyle.color}
-                        style={styles.eachForm}
-                        onChange={answer2Handler}
-                    />
-                    <Text style={styles.countryName}>3.</Text>
-                    <TextInput
-                        value={answer3}
-                        setValue={setAnswer3}
-                        placeholder="País en Inglés"
-                        placeholderTextColor={styles.placeholderStyle.color}
-                        style={styles.eachForm}
-                        onChange={answer3Handler}
-                    />
-                    <Text style={styles.countryName}>4.</Text>
-                    <TextInput
-                        value={answer4}
-                        setValue={setAnswer4}
-                        placeholder="País en Inglés"
-                        placeholderTextColor={styles.placeholderStyle.color}
-                        style={styles.eachForm}
-                        onChange={answer4Handler}
-                    />
-                    <Text style={styles.countryName}>5.</Text>
-                    <TextInput
-                        value={answer5}
-                        setValue={setAnswer5}
-                        placeholder="País en Inglés"
-                        placeholderTextColor={styles.placeholderStyle.color}
-                        style={styles.eachForm}
-                        onChange={answer5Handler}
-                    />
-                    <Text style={styles.countryName}>6.</Text>
-                    <TextInput
-                        value={answer6}
-                        setValue={setAnswer6}
-                        placeholder="País en Inglés"
-                        placeholderTextColor={styles.placeholderStyle.color}
-                        style={styles.eachForm}
-                        onChange={answer6Handler}
-                    />
-                    <TouchableOpacity style={styles.button} onPress={buttonOnsubmitHandler}>
-                        <Text style={styles.textButton}>Enviar</Text>
-                    </TouchableOpacity>
-                    {mensaje==="Te equivocaste :("? alert("Te equivocaste :(") : <p></p>}
+        <ImageBackground
+            source={require('../../assets/banderas2.webp')}
+            style={styles.backgroundImage}
+        >
+            <View style={styles.centerCont}>
+                <View style={styles.mainContainer}>
+                    {randomCountries.map((item) => (renderCountryItem(item)))}
+                </View>
+                <View style={styles.shuffledNamesContainer}>
+                    {shuffledNames.map((item, index) => (
+                        <Text key={index} style={styles.textButton}>-  {item}  -</Text>
+                    ))}
+                </View>
+                <View>
+                    <View style={styles.countryDetails}>
+                        <Text style={styles.countryName}>1.</Text>
+                        <TextInput
+                            value={answer1}
+                            setValue={setAnswer1}
+                            placeholder="País en Inglés"
+                            placeholderTextColor={styles.placeholderStyle.color}
+                            style={styles.eachForm}
+                            onChange={answer1Handler}
+                        />
+                        <Text style={styles.countryName}>2.</Text>
+                        <TextInput
+                            value={answer2}
+                            setValue={setAnswer2}
+                            placeholder="País en Inglés"
+                            placeholderTextColor={styles.placeholderStyle.color}
+                            style={styles.eachForm}
+                            onChange={answer2Handler}
+                        />
+                        <Text style={styles.countryName}>3.</Text>
+                        <TextInput
+                            value={answer3}
+                            setValue={setAnswer3}
+                            placeholder="País en Inglés"
+                            placeholderTextColor={styles.placeholderStyle.color}
+                            style={styles.eachForm}
+                            onChange={answer3Handler}
+                        />
+                        <Text style={styles.countryName}>4.</Text>
+                        <TextInput
+                            value={answer4}
+                            setValue={setAnswer4}
+                            placeholder="País en Inglés"
+                            placeholderTextColor={styles.placeholderStyle.color}
+                            style={styles.eachForm}
+                            onChange={answer4Handler}
+                        />
+                        <Text style={styles.countryName}>5.</Text>
+                        <TextInput
+                            value={answer5}
+                            setValue={setAnswer5}
+                            placeholder="País en Inglés"
+                            placeholderTextColor={styles.placeholderStyle.color}
+                            style={styles.eachForm}
+                            onChange={answer5Handler}
+                        />
+                        <Text style={styles.countryName}>6.</Text>
+                        <TextInput
+                            value={answer6}
+                            setValue={setAnswer6}
+                            placeholder="País en Inglés"
+                            placeholderTextColor={styles.placeholderStyle.color}
+                            style={styles.eachForm}
+                            onChange={answer6Handler}
+                        />
+                        <TouchableOpacity style={styles.button} onPress={buttonOnsubmitHandler}>
+                            <Text style={styles.textButton}>Enviar</Text>
+                        </TouchableOpacity>
+                        {mensaje === "Te equivocaste :(" ? alert("Te equivocaste :("): <p></p>}
+                        {mensaje === "Te equivocaste :(" ? setMensaje(''): <p></p>}
+                    </View>
                 </View>
             </View>
-        </View>
+        </ImageBackground>
     );
 }
 
@@ -197,6 +199,19 @@ const styles = StyleSheet.create({
     headerContainer: {
 
         height: 80,
+    },
+    centerCont: {
+        backgroundColor: '#1A4B8E',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 15,
+        borderRadius: 15,
+        marginHorizontal: '25%'
+    },
+    backgroundImage: {
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center",
     },
     eachForm: {
         borderColor: '#E742EB',

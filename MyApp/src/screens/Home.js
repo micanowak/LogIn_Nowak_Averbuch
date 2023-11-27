@@ -3,67 +3,83 @@ import {
   View,
   Text,
   StyleSheet,
-  FlatList,
-  Image,
   TouchableOpacity,
-  TextInput,
+  ImageBackground,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import axios from "axios";
-import SelectDropdown from 'react-native-select-dropdown';
 
 const Home = () => {
-
   const navigation = useNavigation();
   const [OpcionJuego, setOpcionJuego] = useState(0);
 
-  const selectOptions = [
-    { label: '2', value: 2 },
-    { label: '3', value: 3 },
-    { label: '4', value: 4 },
-  ];
-
   const adivinaBanderaHandler = () => {
     navigation.navigate("Juego");
-  }
+  };
+
   const UnirHandler = () => {
     navigation.navigate("unirJuego");
-  }
+  };
 
   return (
-    <View>
-      <View>
-        <Text>Juegos con Banderas y páises</Text>
+    <ImageBackground
+      source={require('../../assets/banderas2.webp')}
+      style={styles.backgroundImage}
+    >
+      <View style={styles.centerCont}>
+        <View style={styles.container}>
+          <Text style={styles.title}>Juegos con Banderas y países</Text>
+          <TouchableOpacity onPress={adivinaBanderaHandler}>
+            <Text style={styles.button}>Adivina la bandera</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={UnirHandler}>
+            <Text style={styles.button2}>Unir Banderas con sus nombres</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <TouchableOpacity onPress={adivinaBanderaHandler}>
-        <Text>Adivina la bandera</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={UnirHandler}>
-        <Text>Unir Banderas con sus nombres</Text>
-      </TouchableOpacity>
-    </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  dropdown:{
-    backgroundColor: 'white',
-    borderColor: '#E742EB',
-    borderRadius: 15,
-    borderWidth: 2,
-    paddingLeft: 10,
-    padding: 5,
-    marginRight: 5,
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
     marginBottom: 20,
-    width:'100%',
-    height:'auto'
-},
-textDropdown:{
-    color:'#1a4b8e',
-    fontSize:'14px',
-    fontWeight: 600,
-    textAlign: 'justify'
-},
+  },
+  button: {
+    fontSize: 18,
+    color: 'white',
+    backgroundColor: '#E742EB',
+    padding: 10,
+    borderRadius: 15,
+    marginVertical: 10,
+  },
+  button2: {
+    fontSize: 18,
+    color: 'white',
+    backgroundColor: '#973ACD',
+    padding: 10,
+    borderRadius: 15,
+    marginVertical: 10,
+  },
+  centerCont: {
+    backgroundColor: '#1A4B8E',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 30,
+    borderRadius: 15,
+    marginHorizontal:'39%'
+  }
 });
 
 export default Home;

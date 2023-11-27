@@ -7,37 +7,82 @@ import {
     Image,
     TouchableOpacity,
     TextInput,
+    ImageBackground
 } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
 
-const FinJuegoUnir = () => {
+const FinJuego = () => {
     const navigation = useNavigation();
 
-    const buttonHomeHandler = () =>{
+
+    const buttonHomeHandler = () => {
         navigation.navigate("Home");
     }
-    const buttonNewGameHandler = () =>{
+    const buttonNewGameHandler = () => {
         navigation.navigate("unirJuego");
     }
 
     return (
-        <View>
-            <View>
-                <Text>Puntos Finales: {puntos}</Text>
+        <ImageBackground
+            source={require('../../assets/banderas2.webp')}
+            style={styles.backgroundImage}
+        >
+            <View style={styles.centerCont}>
+                <View style={styles.container}>
+                    <Text style={styles.title}>Felicitaciones, ganaste!!</Text>
+                    <TouchableOpacity onPress={buttonNewGameHandler}>
+                        <Text style={styles.button}>Volver a Jugar</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={buttonHomeHandler}>
+                        <Text style={styles.button2}>Volver a la Home</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-            <TouchableOpacity onPress={buttonNewGameHandler}>
-                <Text>Volver a Jugar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={buttonHomeHandler}>
-                <Text>Volver a la Home</Text>
-            </TouchableOpacity>
-        </View>
+        </ImageBackground>
     );
 };
 
 const styles = StyleSheet.create({
-
+    container: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    backgroundImage: {
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center",
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: 'white',
+        marginBottom: 20,
+    },
+    button: {
+        fontSize: 18,
+        color: 'white',
+        backgroundColor: '#E742EB',
+        padding: 10,
+        borderRadius: 15,
+        marginVertical: 10,
+    },
+    button2: {
+        fontSize: 18,
+        color: 'white',
+        backgroundColor: '#973ACD',
+        padding: 10,
+        borderRadius: 15,
+        marginVertical: 10,
+    },
+    centerCont: {
+        backgroundColor: '#1A4B8E',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 30,
+        borderRadius: 15,
+        marginHorizontal: '39%'
+    }
 });
 
-export default FinJuegoUnir;
+export default FinJuego;

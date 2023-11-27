@@ -62,19 +62,19 @@ export default function App() {
         }}
       >
         <Stack.Screen
+          name="LogIn"
+          component={LogIn}
+          options={{ title: "Log In" }}
+        />
+        <Stack.Screen
           name="Juego"
           component={Juego}
           options={{ title: "Adivina Juego" }}
         /> 
         <Stack.Screen
-          name="unirJuego"
-          component={unirJuego}
-          options={{ title: "Unir Juego" }}
-        />
-        <Stack.Screen
-          name="LogIn"
-          component={LogIn}
-          options={{ title: "Log In" }}
+          name="FinJuego"
+          component={FinJuego}
+          options={{ title: "Fin Juego" }}
         />
         <Stack.Screen
           name="FinJuegoUnir"
@@ -87,9 +87,9 @@ export default function App() {
           options={{ title: "Home" }}
         />
         <Stack.Screen
-          name="FinJuego"
-          component={FinJuego}
-          options={{ title: "Fin Juego" }}
+          name="unirJuego"
+          component={unirJuego}
+          options={{ title: "Unir Juego" }}
         />
         <Stack.Screen
           name="SignIn"

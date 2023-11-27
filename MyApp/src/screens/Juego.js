@@ -7,6 +7,7 @@ import {
     Image,
     TouchableOpacity,
     TextInput,
+    ImageBackground
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
@@ -52,7 +53,7 @@ const Juego = () => {
             setPlaceHolder("Nombre País en Inglés");
         } else {
             setPlaceHolder("Nombre País en Inglés");
-            setMensaje("Incorrecto");
+            alert("Te equivocaste :(")
         }
     };
 
@@ -78,7 +79,7 @@ const Juego = () => {
                     <Text style={styles.buttonText}>Enviar</Text>
                 </TouchableOpacity>
                 <View>
-                    <Text style={styles.infoText}>{currentCountry.name}</Text>
+                    
                     {mensaje && <Text style={styles.errorText}>{mensaje}</Text>}
                 </View>
                 <TouchableOpacity style={styles.finishButton} onPress={buttonFinalizarHandler}>
@@ -86,13 +87,21 @@ const Juego = () => {
                 </TouchableOpacity>
 
             </View>
+
         );
     };
 
     return (
-        <View style={styles.container}>
-            {listCountries.length > 0 && renderCurrentCountry()}
-        </View>
+        <ImageBackground
+            source={require('../../assets/banderas2.webp')}
+            style={styles.backgroundImage}
+        >
+            <View style={styles.centerCont}>
+                <View style={styles.container}>
+                    {listCountries.length > 0 && renderCurrentCountry()}
+                </View>
+            </View>
+        </ImageBackground>
     );
 };
 
@@ -102,10 +111,23 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    textPuntos:{
-        color:'white',
-        fontSize:30,
-        marginBottom:10
+    centerCont: {
+        backgroundColor: '#1A4B8E',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 30,
+        borderRadius: 15,
+        marginHorizontal: '39%'
+    },
+    textPuntos: {
+        color: 'white',
+        fontSize: 30,
+        marginBottom: 10
+    },
+    backgroundImage: {
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center",
     },
     imgFlag: {
         width: 300,
