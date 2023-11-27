@@ -65,43 +65,114 @@ const Juego = () => {
         const currentCountry = listCountries[randomCountryIndex];
         console.log(currentCountry);
         return (
-            <View>
+            <View style={styles.container}>
                 <Image style={styles.imgFlag} source={{ uri: currentCountry.flag }} />
                 <TextInput
+                    style={styles.input}
                     value={nombre}
                     placeholder={placeholder}
+                    placeholderTextColor={styles.placeholderStyle.color}
                     onChangeText={nombreOnchangeHandler}
                 />
-                <TouchableOpacity onPress={buttonOnsubmitHandler}>
-                    <Text>Enviar</Text>
+                <TouchableOpacity style={styles.button} onPress={buttonOnsubmitHandler}>
+                    <Text style={styles.buttonText}>Enviar</Text>
                 </TouchableOpacity>
                 <View>
-                    <Text>{currentCountry.name}</Text>
-                    <Text>{mensaje}</Text>
+                    <Text style={styles.infoText}>{currentCountry.name}</Text>
+                    {mensaje && <Text style={styles.errorText}>{mensaje}</Text>}
                 </View>
-                <TouchableOpacity onPress={buttonFinalizarHandler}>
-                    <Text>Finalizar Juego</Text>
+                <TouchableOpacity style={styles.finishButton} onPress={buttonFinalizarHandler}>
+                    <Text style={styles.buttonText}>Finalizar Juego</Text>
                 </TouchableOpacity>
+
             </View>
         );
     };
 
     return (
-        <View>
-            <View></View>
-            <View>
-                <Text>Puntos Actuales: {puntos}</Text>
-            </View>
+        <View style={styles.container}>
             {listCountries.length > 0 && renderCurrentCountry()}
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    textPuntos:{
+        color:'white',
+        fontSize:30,
+        marginBottom:10
+    },
     imgFlag: {
-        width: 100,
-        height: 60,
+        width: 300,
+        height: 180,
+        marginBottom: 10, // Espacio entre la imagen y el TextInput
+    },
+    input: {
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1,
+        marginBottom: 10,
+        paddingHorizontal: 10,
+        width: '80%', // Ancho del TextInput
+        borderRadius: 8,
+    },
+    eachForm: {
+        borderColor: '#E742EB',
+        borderRadius: 15,
+        borderWidth: 2,
+        paddingLeft: 10,
+        padding: 5,
+        margin: 5,
+        marginBottom: 20,
+        fontWeight: 600,
+
+    },
+    placeholderStyle: {
+        color: 'white',
+        fontWeight: 300,
+        alignItems: 'center'
+    },
+    button: {
+        backgroundColor: '#E742EB',
+        padding: 10,
+        borderRadius: 8,
+        alignItems: 'center',
+        width: '80%',
+        marginBottom: 10,
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 16,
+    },
+    infoText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 10,
+    },
+    errorText: {
+        color: 'red',
+        fontSize: 16,
+        marginBottom: 10,
+    },
+    pointsText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginTop: 20,
+    },
+    finishButton: {
+        backgroundColor: '#973ACD',
+        padding: 10,
+        borderRadius: 8,
+        alignItems: 'center',
+        width: '80%',
+        marginTop: 20,
     },
 });
 
 export default Juego;
+

@@ -14,6 +14,7 @@ import Perfil from './src/screens/Perfil';
 import FinJuego from "./src/screens/FinJuego";
 import Juego from './src/screens/Juego';
 import unirJuego from './src/screens/unirJuego';
+import FinJuegoUnir from './src/screens/FinJuegoUnir';
 
 //Firebase
 import firebase from 'firebase/app';
@@ -61,6 +62,11 @@ export default function App() {
         }}
       >
         <Stack.Screen
+          name="Juego"
+          component={Juego}
+          options={{ title: "Adivina Juego" }}
+        /> 
+        <Stack.Screen
           name="unirJuego"
           component={unirJuego}
           options={{ title: "Unir Juego" }}
@@ -69,6 +75,11 @@ export default function App() {
           name="LogIn"
           component={LogIn}
           options={{ title: "Log In" }}
+        />
+        <Stack.Screen
+          name="FinJuegoUnir"
+          component={FinJuegoUnir}
+          options={{ title: "Fin Juego Unir" }}
         />
         <Stack.Screen
           name="Home"
@@ -84,11 +95,6 @@ export default function App() {
           name="SignIn"
           component={SignIn}
           options={{ title: "Sign In" }}
-        /> 
-        <Stack.Screen
-          name="Juego"
-          component={Juego}
-          options={{ title: "Adivina Juego" }}
         /> 
         <Stack.Screen
           name="Perfil"
