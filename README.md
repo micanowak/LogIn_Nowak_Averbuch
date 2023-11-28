@@ -37,7 +37,7 @@
 <h3 align="center">DAI TP</h3>
 
   <p align="center">
-    Vamos creando un Log In y SIgn In que te lleve a una home
+    Vamos creando un Log In y SIgn In que te lleve a una home con juegos sobre banderas
     <br />
     <a href="https://github.com/micanowak/LogIn_Nowak_Averbuch_Smaevich.git"><strong>Explore the docs »</strong></a>
     <br />
@@ -119,21 +119,18 @@ Para Iniciar el proyecto y abrirlo correctamente, los siguientes aspectos serán
    ```
    git clone https://github.com/micanowak/LogIn_Nowak_Averbuch_Smaevich.git
    ```
-2. Dividir la terminal para instalar las distintas dependencias en cada carpeta. 
-3. En una ventana deberás abrir la carpeta 'Api' y en la otra 'MyApp'
-    ```
-    cd ./Api/
-    ```
+2. En una terminal deberás abrir la carpeta 'MyApp'
     ```
     cd ./MyApp/
     ```
-4. En cada ventana por separado realizar el comando:
+3. En la misma ventana realizar el comando:
     ```
     npm i
     ```
-5. Abrir MSSQL y pegar en una nueva query la base de datos.
-6. En 'LogIn_Nowak_Averbuch_Smaevich\Api\.env' cambiar 'DB_SERVER' por el servidor en uso.
-7. Copiar lo que esta comentado en 'LogIn_Nowak_Averbuch_Smaevich\Api\dbconfig.js' y pegarlo en una nueva query
+4. En la misma ventana realizar el comando ára instalar expo y que funcione correctamente:
+    ```
+    npm i expo-cli -g
+    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -143,23 +140,15 @@ Para Iniciar el proyecto y abrirlo correctamente, los siguientes aspectos serán
 ## Usage
 
 Para ser utilizado, seguir los siguientes pasos:
-1. Dividir en dos una nueva Terminal
-2. En una ventana deberás abrir la carpeta 'Api' y en la otra 'MyApp'
-    ```
-    cd ./Api/
-    ```
+1. En una terminal deberás abrir la carpeta 'MyApp'
     ```
     cd ./MyApp/
     ```
-3. En la ventana de 'Api':
+4. Abriremos el proyecto de la siguiente manera, escribiendo en la misma terminal:
     ```
-    node index.js
+    expo start
     ```
-4. En la ventana de 'MyApp':
-    ```
-    expo start --tunnel
-    ```
-    --- Aquí podría llegar a ser preguntado ciertas cosas, decir a todo que si. ---
+3. Teclear la letra 'W' para utilizarlo de manera web.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -182,8 +171,8 @@ See the [open issues](https://github.com/micanowak/LogIn_Nowak_Averbuch_Smaevich
 ## Contact
 
 * Micaela Nowak - [@mica.nowak](https://www.instagram.com/mica.nowak/) - micanowak1@gmail.com
-* Tommy Smaevich - [@mijiaver](https://www.instagram.com/mijiaver/) - mijal_correo@averbuch.com.ar
-* Mijal Averbuch - [@tommy_sma](https://www.instagram.com/tommy_sma/) - tsmaevich8@gmail.com
+* Mijal Averbuch - [@mijiaver](https://www.instagram.com/mijiaver/) - mijal_correo@averbuch.com.ar
+* Tommy Smaevich - [@tommy_sma](https://www.instagram.com/tommy_sma/) - tsmaevich8@gmail.com
 
 
 Project Link: https://github.com/micanowak/LogIn_Nowak_Averbuch_Smaevich.git

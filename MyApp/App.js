@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import LogIn from './src/screens/LogIn';
 import Home from './src/screens/Home';
 import {
@@ -41,8 +41,8 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 // Inicializo Firebase
 
-export default function App() {   
-  
+export default function App() {
+
   const navTheme = {
     ...DefaultTheme,
     colors: {
@@ -50,56 +50,71 @@ export default function App() {
       background: "#1A4B8E",
     },
   };
-  
 
+  const headerOptions = {
+    headerStyle: {
+      backgroundColor: 'white',
+    },
+    headerTintColor: '#1A4B8E',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+    headerTitleAlign: 'center',
+    headerLeft: () => (
+      <Image
+        source={require('./assets/logo.png')}
+        style={{ width: 40, height: 40, marginLeft: 10 }}
+      />
+    ),
+  };
 
   return (
     <NavigationContainer theme={navTheme}>
       <Stack.Navigator
         screenOptions={{
           animationEnabled: false,
-          headerShown: false,
+          //headerShown: false,
         }}
       >
         <Stack.Screen
           name="LogIn"
           component={LogIn}
-          options={{ title: "Log In" }}
+          options={{ title: "FirexStyle", ...headerOptions, headerShown: true }}
         />
         <Stack.Screen
           name="Juego"
           component={Juego}
-          options={{ title: "Adivina Juego" }}
-        /> 
+          options={{ title: "FirexStyle",  ...headerOptions, headerShown: true }}
+        />
         <Stack.Screen
           name="FinJuego"
           component={FinJuego}
-          options={{ title: "Fin Juego" }}
+          options={{ title: "FirexStyle",  ...headerOptions, headerShown: true }}
         />
         <Stack.Screen
           name="FinJuegoUnir"
           component={FinJuegoUnir}
-          options={{ title: "Fin Juego Unir" }}
+          options={{ title: "FirexStyle",  ...headerOptions, headerShown: true }}
         />
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{ title: "Home" }}
+          options={{ title: "FirexStyle",  ...headerOptions, headerShown: true }}
         />
         <Stack.Screen
           name="unirJuego"
           component={unirJuego}
-          options={{ title: "Unir Juego" }}
+          options={{ title: "FirexStyle",  ...headerOptions, headerShown: true }}
         />
         <Stack.Screen
           name="SignIn"
           component={SignIn}
-          options={{ title: "Sign In" }}
-        /> 
+          options={{ title: "FirexStyle",  ...headerOptions, headerShown: true }}
+        />
         <Stack.Screen
           name="Perfil"
           component={Perfil}
-          options={{ title: "Perfil" }}
+          options={{ title: "FirexStyle",  ...headerOptions, headerShown: true }}
         />
       </Stack.Navigator>
     </NavigationContainer>

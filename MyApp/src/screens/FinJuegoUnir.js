@@ -19,9 +19,6 @@ const FinJuego = () => {
     const buttonHomeHandler = () => {
         navigation.navigate("Home");
     }
-    const buttonNewGameHandler = () => {
-        navigation.navigate("unirJuego");
-    }
 
     return (
         <ImageBackground
@@ -31,9 +28,6 @@ const FinJuego = () => {
             <View style={styles.centerCont}>
                 <View style={styles.container}>
                     <Text style={styles.title}>Felicitaciones, ganaste!!</Text>
-                    <TouchableOpacity onPress={buttonNewGameHandler}>
-                        <Text style={styles.button}>Volver a Jugar</Text>
-                    </TouchableOpacity>
                     <TouchableOpacity onPress={buttonHomeHandler}>
                         <Text style={styles.button2}>Volver a la Home</Text>
                     </TouchableOpacity>
